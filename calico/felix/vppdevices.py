@@ -579,7 +579,7 @@ class VppDevices(DevicesPlugin):
                                             is_add, False,
                                             is_ipv6, False,
                                             False, False,
-                                            False, 0,
+                                            False, False, False 0,
                                             128, dst_address,
                                             dst_address)
 
@@ -630,7 +630,7 @@ class VppDevices(DevicesPlugin):
                                                 is_add, False,
                                                 is_ipv6, False,
                                                 False, False,
-                                                False, 0,
+                                                False, False, False 0,
                                                 32, dst_address,
                                                 dst_address)
             if type(route_r) != list and route_r.retval == 0:
