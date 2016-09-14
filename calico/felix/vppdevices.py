@@ -386,6 +386,16 @@ class VppDevices(DevicesPlugin):
                               "for %s failed???", vpp_inter)
                 return
 
+            # If create success. Set interface unumbered to allow IP traffic.
+            flags_ipu = vpp_papi.sw_interface_set_unnumbered(sw_if_index,
+                                                      sw_if_index,
+                                                      True)
+
+            if type(flags_ipu) == list or flags_ipu.retval != 0:
+                _log.critical("vppapi: Call to set IP Unumbered (Enable IP Traffic)"
+                              "for %s failed???", vpp_inter)
+                return
+
             _log.debug("vppapi: VPP AFP for %s created", vpp_inter)
 
         else:
