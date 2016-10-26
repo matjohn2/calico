@@ -586,13 +586,13 @@ class VppDevices(DevicesPlugin):
             _log.debug("vppapi: Configuring Requested route %s/128 via interface: %s ifindex: %s",
                 dst_address_str, vpp_inter, sw_if_index)
             route_r = vpp_papi.ip_add_del_route(sw_if_index,
-                                            vpp_vrf_id,
-                                            False, 9, 0,
+                                            vpp_vrf_id, False,
+                                             9, 0,
                                             True, True,
-                                            is_add, False,
+                                            is_add, False, False, False,
                                             is_ipv6, False,
                                             False, False,
-                                            False, False, False, 0,
+                                            False, 0,
                                             128, dst_address,
                                             dst_address)
 
@@ -637,15 +637,15 @@ class VppDevices(DevicesPlugin):
                 return
 
             route_r = vpp_papi.ip_add_del_route(sw_if_index,
-                                                vpp_vrf_id,
-                                                False, 9, 0,
-                                                True, True,
-                                                is_add, False,
-                                                is_ipv6, False,
-                                                False, False,
-                                                False, False, False, 0,
-                                                32, dst_address,
-                                                dst_address)
+                                            vpp_vrf_id, False,
+                                             9, 0,
+                                            True, True,
+                                            is_add, False, False, False,
+                                            is_ipv6, False,
+                                            False, False,
+                                            False, 0,
+                                            128, dst_address,
+                                            dst_address)
             if type(route_r) != list and route_r.retval == 0:
                 _log.debug("vppapi: added static route for %s",
                           dst_address_str)
